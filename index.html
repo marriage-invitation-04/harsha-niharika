@@ -639,9 +639,71 @@ footer {
 .footer-quote { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; color:rgba(255,255,255,0.65); max-width:400px; margin:0 auto 20px; line-height:1.8; }
 .footer-names { font-family:'Great Vibes',cursive; font-size:48px; color:#fff; }
 .footer-kan { margin-top:12px; font-size:14px; color:rgba(255,255,255,0.4); font-family:'Cormorant Garamond',serif; font-style:italic; }
+
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 28px;
+  background: rgba(255, 250, 248, 0.75);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(194,96,122,0.15);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: all 0.4s ease;
+}
+
+.nav-left {
+  font-family: 'Great Vibes', cursive;
+  font-size: 22px;
+  color: var(--rose-dark);
+}
+
+.nav-links {
+  display: flex;
+  gap: 18px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  transition: 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--rose-deep);
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+}
 </style>
 </head>
 <body>
+
+<!-- TOP NAV -->
+<nav class="top-nav">
+  <div class="nav-left">Harsha ♥ Niharika</div>
+
+  <div class="nav-links">
+    <a href="#hero">Home</a>
+    <a href="#events">Events</a>
+    <a href="#map">Venue</a>
+    <a href="#gallery">Invitation</a>
+    <a href="#couple">Moments</a>
+    <a href="#kannada">Kannada</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
 <!-- ═══════════════════════════════
      PAGE 1 — ENVELOPE LANDING
@@ -684,7 +746,7 @@ footer {
 <div id="page-main">
 
   <!-- ── HERO ── -->
-  <div class="hero">
+  <div class="hero" id="hero">
     <div class="hero-petal" style="width:300px;height:300px;top:-80px;left:-80px;transform:rotate(20deg)"></div>
     <div class="hero-petal" style="width:200px;height:200px;bottom:60px;right:-40px;transform:rotate(-30deg)"></div>
 
@@ -738,7 +800,7 @@ footer {
   <hr class="divider">
 
   <!-- ── CELEBRATIONS ── -->
-  <div class="section">
+  <div class="section" id="events">
     <p class="sec-eyebrow">Save the dates</p>
     <h2 class="sec-title">Celebrations</h2>
 
@@ -764,7 +826,7 @@ footer {
 
       <div class="ev-card">
         <div class="ev-icon">🌿</div>
-        <div class="ev-title">Aarathakshathe & Beegara Oota</div>
+        <div class="ev-title">Beegara Oota</div>
         <div class="ev-date">Sunday, 17 May 2026</div>
         <div class="ev-time">12:00 Noon</div>
         <div class="ev-venue">Prestiva Recreations<br>Rajaanukunte–Kakolu Road<br>Bengaluru – 560119</div>
@@ -775,7 +837,7 @@ footer {
   </div>
 
   <!-- ── MAP ── -->
-  <div class="map-section">
+  <div class="map-section" id="map">
     <div class="map-inner">
       <p class="sec-eyebrow" style="text-align:center;margin-bottom:8px">Find us here</p>
       <h2 class="sec-title" style="font-size:clamp(28px,5vw,42px);margin-bottom:24px">Venue Location</h2>
@@ -800,7 +862,7 @@ footer {
           <a class="map-addr-link" href="https://maps.google.com/?q=KMM+Royal+Convention+Hall+Bengaluru" target="_blank">Open in Google Maps →</a>
         </div>
         <div class="map-addr-card">
-          <p class="map-addr-title">🌿 Aarathakshathe & Beegara Oota</p>
+          <p class="map-addr-title">🌿 Beegara Oota</p>
           <p class="map-addr-text">
             Prestiva Recreations<br>
             Rajaanukunte–Kakolu Road<br>
@@ -815,65 +877,100 @@ footer {
   <hr class="divider">
 
   <!-- ── INVITATION GALLERY ── -->
-  <div class="gallery-section">
-    <p class="sec-eyebrow">Our invitation cards</p>
+  <div class="gallery-section" id="gallery">
     <h2 class="sec-title">The Invitation</h2>
 
     <div class="gallery-grid" id="inv-gallery">
       <!-- Slots — user will drop real images; placeholders shown now -->
-      <div class="gallery-thumb" onclick="openLb(this,'Invitation — Front Cover','inv')">
-        <div class="gallery-placeholder"><div class="ph-icon">🌸</div><span>Invitation Cover</span><span style="font-size:11px;opacity:0.6">Add photo</span></div>
-        <div class="gallery-overlay">View</div>
-      </div>
-      <div class="gallery-thumb" onclick="openLb(this,'Invitation — Inside (English)','inv')">
-        <div class="gallery-placeholder"><div class="ph-icon">📜</div><span>Inside — English</span><span style="font-size:11px;opacity:0.6">Add photo</span></div>
-        <div class="gallery-overlay">View</div>
-      </div>
-      <div class="gallery-thumb" onclick="openLb(this,'Invitation — Inside (Kannada)','inv')">
-        <div class="gallery-placeholder"><div class="ph-icon">📜</div><span>Inside — Kannada</span><span style="font-size:11px;opacity:0.6">Add photo</span></div>
-        <div class="gallery-overlay">View</div>
-      </div>
-      <div class="gallery-thumb" onclick="openLb(this,'Invitation — Back','inv')">
-        <div class="gallery-placeholder"><div class="ph-icon">✉️</div><span>Back of Card</span><span style="font-size:11px;opacity:0.6">Add photo</span></div>
-        <div class="gallery-overlay">View</div>
-      </div>
-      <div class="gallery-thumb" onclick="openLb(this,'Haldi Invite','inv')">
-        <div class="gallery-placeholder"><div class="ph-icon">🌿</div><span>Haldi Invite</span><span style="font-size:11px;opacity:0.6">Add photo</span></div>
-        <div class="gallery-overlay">View</div>
-      </div>
-      <div class="gallery-thumb" onclick="openLb(this,'Invitation — Full Set','inv')">
-        <div class="gallery-placeholder"><div class="ph-icon">💌</div><span>Full Set</span><span style="font-size:11px;opacity:0.6">Add photo</span></div>
-        <div class="gallery-overlay">View</div>
-      </div>
+				<div class="gallery-thumb"
+					 data-img="front-page-harsha.jpeg"
+					 onclick="openLb(this,'Invitation — English')">
+
+				  <div class="gallery-placeholder">
+					<div class="ph-icon">💌</div>
+					<span>ENGLISH</span>
+				  </div>
+
+				  <div class="gallery-overlay">View</div>
+				</div>
+
+
+				<div class="gallery-thumb"
+					 data-img="front-kannada-harsha.jpeg"
+					 onclick="openLb(this,'Invitation — Kannada')">
+
+				  <div class="gallery-placeholder">
+					<div class="ph-icon">📜</div>
+					<span>KANNADA</span>
+				  </div>
+
+				  <div class="gallery-overlay">View</div>
+				</div>
+				
+				<div class="gallery-thumb"
+					 data-img="beegara-oota.jpeg"
+					 onclick="openLb(this,'Beegara Oota Invitation')">
+
+				  <div class="gallery-placeholder">
+					<div class="ph-icon">🌿</div>
+					<span>BEEGARA OOTA</span>
+				  </div>
+
+				  <div class="gallery-overlay">View</div>
+				</div>
     </div>
   </div>
 
   <hr class="divider">
 
   <!-- ── COUPLE PHOTOS ── -->
-  <div class="couple-section">
+  <div class="couple-section" id="couple">
     <div class="couple-inner">
       <p class="sec-eyebrow" style="text-align:center">Moments together</p>
       <h2 class="sec-title">Harsha & Niharika</h2>
 
-      <div class="couple-grid">
-        <div class="couple-photo" onclick="openLb(this,'Harsha & Niharika','couple')">
-          <div class="gallery-placeholder"><div class="ph-icon">💕</div><span>Photo together</span><span style="font-size:11px;opacity:0.6">Add photo</span></div>
-          <div class="gallery-overlay">View</div>
-        </div>
-        <div class="couple-photo" onclick="openLb(this,'Harsha & Niharika','couple')">
-          <div class="gallery-placeholder"><div class="ph-icon">💑</div><span>Couple photo</span><span style="font-size:11px;opacity:0.6">Add photo</span></div>
-          <div class="gallery-overlay">View</div>
-        </div>
-        <div class="couple-photo" onclick="openLb(this,'Harsha & Niharika','couple')">
-          <div class="gallery-placeholder"><div class="ph-icon">🌸</div><span>Together</span><span style="font-size:11px;opacity:0.6">Add photo</span></div>
-          <div class="gallery-overlay">View</div>
-        </div>
-        <div class="couple-photo" onclick="openLb(this,'Harsha & Niharika','couple')">
-          <div class="gallery-placeholder"><div class="ph-icon">✨</div><span>Memory</span><span style="font-size:11px;opacity:0.6">Add photo</span></div>
-          <div class="gallery-overlay">View</div>
-        </div>
-      </div>
+			<div class="couple-grid">
+
+			  <div class="couple-photo"
+				   data-img="couple2.jpeg"
+				   onclick="openLb(this,'Harsha & Niharika')">
+				<div class="gallery-placeholder">
+				  <div class="ph-icon">💕</div>
+				  <span>Photo together</span>
+				</div>
+				<div class="gallery-overlay">View</div>
+			  </div>
+
+			  <div class="couple-photo"
+				   data-img="couple1.jpeg"
+				   onclick="openLb(this,'Harsha & Niharika')">
+				<div class="gallery-placeholder">
+				  <div class="ph-icon">💑</div>
+				  <span>Couple photo</span>
+				</div>
+				<div class="gallery-overlay">View</div>
+			  </div>
+
+			  <div class="couple-photo"
+				   data-img="harsha-bride.jpeg"
+				   onclick="openLb(this,'Harsha & Niharika')">
+				<div class="gallery-placeholder">
+				  <div class="ph-icon">🌸</div>
+				  <span>Bride</span>
+				</div>
+				<div class="gallery-overlay">View</div>
+			  </div>
+
+			  <div class="couple-photo"
+				   data-img="harsha-groom.jpeg"
+				   onclick="openLb(this,'Harsha & Niharika')">
+				<div class="gallery-placeholder">
+				  <div class="ph-icon">✨</div>
+				  <span>Groom</span>
+				</div>
+				<div class="gallery-overlay">View</div>
+			  </div>
+			</div>
 
       <p class="couple-quote">
         "Two souls, one heart — beginning a beautiful journey together."
@@ -883,55 +980,8 @@ footer {
 
   <hr class="divider">
 
-  <!-- ── FAMILIES ── -->
-  <div class="section families-bg">
-    <p class="sec-eyebrow">Blessed by</p>
-    <h2 class="sec-title">Our Families</h2>
-
-    <div class="families-layout">
-      <div class="fam-card">
-        <p class="fam-side">Groom's Family</p>
-        <p class="fam-name">Harsha N.</p>
-        <p class="fam-deg">B.E.</p>
-        <p class="fam-lbl">Son of</p>
-        <p class="fam-parents">Smt. Prabhavathi R.<br>&amp; Sri Nagaraju M.</p>
-        <div class="fam-addr">No. 49, Muthu Nilaya, Someshwaranagar,<br>Chikkabomsandra, G.K.V.K. Post,<br>Bengaluru – 560065</div>
-        <div class="fam-phone">📞 9448212841 · 7259588533 · 8861131071</div>
-      </div>
-
-      <div class="fam-div">
-        <div class="fam-div-line"></div>
-        <div class="fam-div-icon">✿</div>
-        <div class="fam-div-line"></div>
-      </div>
-
-      <div class="fam-card fam-right">
-        <p class="fam-side">Bride's Family</p>
-        <p class="fam-name">Niharika P.N.</p>
-        <p class="fam-deg">B.Pharma</p>
-        <p class="fam-lbl">Daughter of</p>
-        <p class="fam-parents">Elder Dr. Smt. Nalina B.R.<br>&amp; Sri Nagraj P.L.</p>
-        <div class="fam-addr">No. 80, Pattandur Agrahara,<br>Whitefield, Bengaluru</div>
-        <div class="fam-phone">📞 9740464943</div>
-      </div>
-    </div>
-
-    <div class="also-inviting">
-      <p class="sec-eyebrow" style="margin-bottom:16px">Also inviting with love from</p>
-      <div class="also-names">
-        Smt. Prabhavathi R. &amp; Sri Nagaraju M.<br>
-        Smt. Manasa S. &amp; Sri Kirankumar N.<br>
-        Smt. Nalina B.R. &amp; Sri Nagaraju P.N.<br>
-        Kum. Gritha K. &nbsp;&amp;&nbsp; Chi. Rudved K.
-      </div>
-    </div>
-  </div>
-
-  <hr class="divider">
-
   <!-- ── KANNADA ── -->
-  <div class="kannada-band">
-    <p class="sec-eyebrow">ಕನ್ನಡದಲ್ಲಿ</p>
+  <div class="kannada-band" id="kannada">
     <h2 class="sec-title" style="font-family:'Jost',sans-serif;font-size:28px;color:var(--rose-dark)">ಶುಭ ವಿವಾಹ</h2>
     <div class="kan-card">
       <p class="kan-text">
@@ -950,7 +1000,7 @@ footer {
   </div>
 
   <!-- ── CONTACT ── -->
-  <div class="contact-band">
+  <div class="contact-band" id="contact">
     <p class="sec-eyebrow">Reach out to us</p>
     <h2 class="sec-title" style="font-size:clamp(28px,5vw,40px);margin-bottom:0">For Any Queries</h2>
     <div class="contact-pills">
@@ -1009,11 +1059,19 @@ footer {
 var opened = false;
 function openEnvelope() {
   if (opened) return;
+
   var env = document.getElementById('envelope');
   env.classList.add('opening');
+
   setTimeout(function() {
     document.getElementById('page-landing').classList.add('hidden');
     document.getElementById('page-main').classList.add('visible');
+
+    // 👉 SHOW NAV HERE
+    document.querySelector('.top-nav').style.opacity = '1';
+    document.querySelector('.top-nav').style.pointerEvents = 'auto';
+    document.querySelector('.top-nav').style.transform = 'translateY(0)';
+
     document.body.style.overflow = 'auto';
     opened = true;
   }, 1200);
@@ -1036,14 +1094,16 @@ function openEnvelope() {
 
 /* ── LIGHTBOX ── */
 function openLb(el, caption) {
-  var img = el.querySelector('img');
   var lb = document.getElementById('lightbox');
-  if (img) {
-    document.getElementById('lb-img').src = img.src;
+  var imgSrc = el.getAttribute('data-img');
+
+  if (imgSrc) {
+    document.getElementById('lb-img').src = imgSrc;
     document.getElementById('lb-img').style.display = 'block';
   } else {
     document.getElementById('lb-img').style.display = 'none';
   }
+
   document.getElementById('lb-caption').textContent = caption || '';
   lb.classList.add('open');
   document.body.style.overflow = 'hidden';
