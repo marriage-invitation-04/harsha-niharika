@@ -734,6 +734,27 @@ html {
     font-size: 18px;
   }
 }
+.footer-contact {
+  margin-top: 28px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.footer-contact-title {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 12px;
+}
+
+.footer-contact-numbers {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.75);
+}
 </style>
 </head>
 <body>
@@ -851,23 +872,34 @@ html {
 
     <div class="events-row">
 
-      <div class="ev-card" style="border-color:rgba(194,96,122,0.4)">
-        <div class="ev-icon" style="border-color:var(--rose-deep);border-width:2px">🪔</div>
-        <div class="ev-title">Reception</div>
-        <div class="ev-date">Sunday, 3 May 2026</div>
-        <div class="ev-time">6:30 PM onwards</div>
-        <div class="ev-venue">K.M.M. Royal Convention Hall<br>Whitefield–Hoskote Road<br>Bengaluru – 560049</div>
-        <a class="map-btn" href="https://maps.google.com/?q=KMM+Royal+Convention+Hall+Bengaluru+Whitefield" target="_blank">📍 Get Directions</a>
-      </div>
+				<div class="ev-card" style="border-color:rgba(194,96,122,0.4)">
 
-      <div class="ev-card">
-        <div class="ev-icon">🌸</div>
-        <div class="ev-title">Muhurtham</div>
-        <div class="ev-date">Monday, 4 May 2026</div>
-        <div class="ev-time">9:15 AM – 10:15 AM</div>
-        <div class="ev-venue">K.M.M. Royal Convention Hall<br>Whitefield–Hoskote Road<br>Bengaluru – 560049</div>
-        <a class="map-btn" href="https://maps.google.com/?q=KMM+Royal+Convention+Hall+Bengaluru+Whitefield" target="_blank">📍 Get Directions</a>
-      </div>
+				  <div class="ev-icon" style="border-color:var(--rose-deep);border-width:2px">
+					🪔
+				  </div>
+
+				  <div class="ev-title">Wedding Celebrations</div>
+
+				  <div class="ev-date">Sunday, 3 May 2026 & Monday, 4 May 2026</div>
+
+				  <div class="ev-time">
+					Reception: 6:30 PM onwards (3rd May)<br>
+					Muhurtham: 9:15 AM – 10:15 AM (4th May)
+				  </div>
+
+				  <div class="ev-venue">
+					K.M.M. Royal Convention Hall<br>
+					Whitefield–Hoskote Road<br>
+					Bengaluru – 560049
+				  </div>
+
+				  <a class="map-btn"
+					 href="https://maps.google.com/?q=KMM+Royal+Convention+Hall+Bengaluru+Whitefield"
+					 target="_blank">
+					📍 Get Directions
+				  </a>
+
+				</div>
 
       <div class="ev-card">
         <div class="ev-icon">🍽️</div>
@@ -1005,30 +1037,39 @@ html {
     </div>
   </div>
 
-  <!-- ── CONTACT ── -->
-  <div class="contact-band" id="contact">
-    <p class="sec-eyebrow">Reach out to us</p>
-    <h2 class="sec-title" style="font-size:clamp(28px,5vw,40px);margin-bottom:0">For Any Queries</h2>
-    <div class="contact-pills">
-      <div class="cpill">📞 9448212841</div>
-      <div class="cpill">📞 7259588533</div>
-      <div class="cpill">📞 9740464943</div>
+
+  <!-- ── FOOTER ── -->
+<footer>
+
+  <div class="ornament" style="margin-bottom:24px">
+    <div class="orn-line l" style="background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3))"></div>
+    <div class="orn-dot" style="background:rgba(255,255,255,0.5)"></div>
+    <div class="orn-dot lg" style="background:rgba(255,255,255,0.5)"></div>
+    <div class="orn-dot" style="background:rgba(255,255,255,0.5)"></div>
+    <div class="orn-line r" style="background:linear-gradient(90deg,rgba(255,255,255,0.3),transparent)"></div>
+  </div>
+
+  <p class="footer-quote">
+    "Your presence will make our day complete.<br>
+    We await you with open hearts."
+  </p>
+
+  <p class="footer-names">Harsha &amp; Niharika</p>
+
+  <p class="footer-kan">ಮದುವೆಯ ಮಮತೆಯ ಕರೆಯೋಲೆ</p>
+
+  <!-- CONTACT SECTION INSIDE FOOTER -->
+  <div class="footer-contact">
+    <p class="footer-contact-title">For any queries</p>
+
+    <div class="footer-contact-numbers">
+      <div>📞 9448212841</div>
+      <div>📞 7259588533</div>
+      <div>📞 9740464943</div>
     </div>
   </div>
 
-  <!-- ── FOOTER ── -->
-  <footer>
-    <div class="ornament" style="margin-bottom:24px">
-      <div class="orn-line l" style="background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3))"></div>
-      <div class="orn-dot" style="background:rgba(255,255,255,0.5)"></div>
-      <div class="orn-dot lg" style="background:rgba(255,255,255,0.5)"></div>
-      <div class="orn-dot" style="background:rgba(255,255,255,0.5)"></div>
-      <div class="orn-line r" style="background:linear-gradient(90deg,rgba(255,255,255,0.3),transparent)"></div>
-    </div>
-    <p class="footer-quote">"Your presence will make our day complete.<br>We await you with open hearts."</p>
-    <p class="footer-names">Harsha &amp; Niharika</p>
-    <p class="footer-kan">ಮದುವೆಯ ಮಮತೆಯ ಕರೆಯೋಲೆ</p>
-  </footer>
+</footer>
 
 </div>
 
