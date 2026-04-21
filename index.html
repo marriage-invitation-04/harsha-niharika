@@ -526,10 +526,11 @@ hr.divider {
 .couple-inner { max-width: 900px; margin: 0 auto; }
 
 .couple-grid {
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
   margin-top: 8px;
+  justify-content: center;
 }
 
 .couple-photo {
@@ -540,6 +541,8 @@ hr.divider {
   position: relative;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
+  max-width: 280px;
+  width: 100%;
 }
 .couple-photo img { width:100%; height:100%; object-fit:cover; transition: transform 0.5s; }
 .couple-photo:hover img { transform: scale(1.06); }
@@ -686,17 +689,37 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 70px;
 }
+.lb-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+  opacity: 0.7;
+  user-select: none;
+}
+
+.lb-nav:hover {
+  opacity: 1;
+}
+
+.lb-nav.left {
+  left: 20px;
+}
+
+.lb-nav.right {
+  right: 20px;
+}
 </style>
 </head>
 <body>
 
 <!-- TOP NAV -->
 <nav class="top-nav">
-  <div class="nav-left">Harsha ♥ Niharika</div>
-
   <div class="nav-links">
     <a href="#hero">Home</a>
-    <a href="#events">Events</a>
     <a href="#map">Venue</a>
     <a href="#gallery">Invitation</a>
     <a href="#couple">Moments</a>
@@ -765,7 +788,7 @@ html {
       Niharika
     </div>
 
-    <p class="h-tagline">ಮದುವೆಯ ಮಮತೆಯ ಕರೆಯೋಲೆ — A loving call to our wedding</p>
+    <p class="h-tagline">A loving call to our wedding</p>
 
     <div class="ornament" style="margin-top:18px">
       <div class="orn-line l"></div><div class="orn-dot"></div><div class="orn-line r"></div>
@@ -825,7 +848,7 @@ html {
       </div>
 
       <div class="ev-card">
-        <div class="ev-icon">🌿</div>
+        <div class="ev-icon">🍽️</div>
         <div class="ev-title">Beegara Oota</div>
         <div class="ev-date">Sunday, 17 May 2026</div>
         <div class="ev-time">12:00 Noon</div>
@@ -862,7 +885,7 @@ html {
           <a class="map-addr-link" href="https://maps.google.com/?q=KMM+Royal+Convention+Hall+Bengaluru" target="_blank">Open in Google Maps →</a>
         </div>
         <div class="map-addr-card">
-          <p class="map-addr-title">🌿 Beegara Oota</p>
+          <p class="map-addr-title">🍽️ Beegara Oota</p>
           <p class="map-addr-text">
             Prestiva Recreations<br>
             Rajaanukunte–Kakolu Road<br>
@@ -888,20 +911,7 @@ html {
 
 				  <div class="gallery-placeholder">
 					<div class="ph-icon">💌</div>
-					<span>ENGLISH</span>
-				  </div>
-
-				  <div class="gallery-overlay">View</div>
-				</div>
-
-
-				<div class="gallery-thumb"
-					 data-img="front-kannada-harsha.jpeg"
-					 onclick="openLb(this,'Invitation — Kannada')">
-
-				  <div class="gallery-placeholder">
-					<div class="ph-icon">📜</div>
-					<span>KANNADA</span>
+					<span>Marriage</span>
 				  </div>
 
 				  <div class="gallery-overlay">View</div>
@@ -912,8 +922,8 @@ html {
 					 onclick="openLb(this,'Beegara Oota Invitation')">
 
 				  <div class="gallery-placeholder">
-					<div class="ph-icon">🌿</div>
-					<span>BEEGARA OOTA</span>
+					<div class="ph-icon">🍽️</div>
+					<span>Beegara Oota</span>
 				  </div>
 
 				  <div class="gallery-overlay">View</div>
@@ -929,48 +939,22 @@ html {
       <p class="sec-eyebrow" style="text-align:center">Moments together</p>
       <h2 class="sec-title">Harsha & Niharika</h2>
 
-			<div class="couple-grid">
+				<div class="couple-grid">
 
-			  <div class="couple-photo"
-				   data-img="couple2.jpeg"
-				   onclick="openLb(this,'Harsha & Niharika')">
-				<div class="gallery-placeholder">
-				  <div class="ph-icon">💕</div>
-				  <span>Photo together</span>
-				</div>
-				<div class="gallery-overlay">View</div>
-			  </div>
+				  <div class="couple-photo"
+					   data-images="couple1.jpeg,couple2.jpeg,harsha-bride.jpeg,harsha-groom.jpeg"
+					   onclick="openGallery(this,'Harsha & Niharika')">
 
-			  <div class="couple-photo"
-				   data-img="couple1.jpeg"
-				   onclick="openLb(this,'Harsha & Niharika')">
-				<div class="gallery-placeholder">
-				  <div class="ph-icon">💑</div>
-				  <span>Couple photo</span>
-				</div>
-				<div class="gallery-overlay">View</div>
-			  </div>
+					<div class="gallery-placeholder">
+					  <div class="ph-icon">💕</div>
+					  <span>Memories together</span>
+					  <span style="font-size:11px;opacity:0.6">Tap to view</span>
+					</div>
 
-			  <div class="couple-photo"
-				   data-img="harsha-bride.jpeg"
-				   onclick="openLb(this,'Harsha & Niharika')">
-				<div class="gallery-placeholder">
-				  <div class="ph-icon">🌸</div>
-				  <span>Bride</span>
+					<div class="gallery-overlay">View</div>
+				  </div>
+				  
 				</div>
-				<div class="gallery-overlay">View</div>
-			  </div>
-
-			  <div class="couple-photo"
-				   data-img="harsha-groom.jpeg"
-				   onclick="openLb(this,'Harsha & Niharika')">
-				<div class="gallery-placeholder">
-				  <div class="ph-icon">✨</div>
-				  <span>Groom</span>
-				</div>
-				<div class="gallery-overlay">View</div>
-			  </div>
-			</div>
 
       <p class="couple-quote">
         "Two souls, one heart — beginning a beautiful journey together."
@@ -1029,7 +1013,11 @@ html {
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeLb(event)">
   <span class="lb-close" onclick="closeLb()">×</span>
+
+  <span class="lb-nav left" onclick="prevImg()">‹</span>
   <img id="lb-img" src="" alt="">
+  <span class="lb-nav right" onclick="nextImg()">›</span>
+
   <p class="lb-caption" id="lb-caption"></p>
 </div>
 
@@ -1114,6 +1102,58 @@ function closeLb(e) {
   document.body.style.overflow = 'auto';
 }
 document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeLb({target:document.getElementById('lightbox')}); });
+
+let galleryImages = [];
+let currentIndex = 0;
+
+function openGallery(el, caption) {
+  const data = el.getAttribute('data-images');
+
+  if (!data) return;
+
+  galleryImages = data.split(',');
+  currentIndex = 0;
+
+  showImage(caption);
+
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function showImage(caption) {
+  const img = document.getElementById('lb-img');
+  img.src = galleryImages[currentIndex];
+
+  document.getElementById('lb-caption').textContent =
+    caption + " (" + (currentIndex + 1) + "/" + galleryImages.length + ")";
+}
+
+// Navigation
+document.addEventListener('keydown', function(e) {
+  if (!galleryImages.length) return;
+
+  if (e.key === 'ArrowRight') {
+    currentIndex = (currentIndex + 1) % galleryImages.length;
+    showImage('Harsha & Niharika');
+  }
+
+  if (e.key === 'ArrowLeft') {
+    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+    showImage('Harsha & Niharika');
+  }
+});
+
+function nextImg() {
+  if (!galleryImages.length) return;
+  currentIndex = (currentIndex + 1) % galleryImages.length;
+  showImage('Harsha & Niharika');
+}
+
+function prevImg() {
+  if (!galleryImages.length) return;
+  currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+  showImage('Harsha & Niharika');
+}
 </script>
 </body>
 </html>
