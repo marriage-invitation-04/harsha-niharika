@@ -174,7 +174,7 @@ body { background: var(--ivory); font-family: 'Jost', sans-serif; overflow-x: hi
 }
 
 .letter-names {
-  font-family: 'Great Vibes', cursive;
+  font-family: 'Allura', cursive;
   font-size: 22px;
   color: var(--rose-deep);
   text-align: center;
@@ -757,9 +757,62 @@ html {
   font-size: 14px;
   color: rgba(255,255,255,0.75);
 }
+#music-control {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(139,45,69,0.9);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+@media (max-width: 768px) {
+
+  .families-layout {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 28px;
+  }
+
+  .fam-div {
+    display: none; /* hide vertical divider on mobile */
+  }
+
+  .fam-right {
+    text-align: center;
+  }
+
+  .fam-right .fam-side,
+  .fam-right .fam-name,
+  .fam-right .fam-deg,
+  .fam-right .fam-lbl,
+  .fam-right .fam-parents,
+  .fam-right .fam-addr,
+  .fam-right .fam-phone {
+    text-align: center;
+  }
+
+  .fam-card {
+    padding: 10px 0;
+  }
+
+}
 </style>
 </head>
 <body>
+<div id="music-control" onclick="toggleMusic()">🔊</div>
+<audio id="bg-music" loop>
+  <source src="chanakya-by-rishabh-sharma-new.mp3" type="audio/mpeg">
+</audio>
+
 
 <!-- TOP NAV -->
 <nav class="top-nav">
@@ -1038,7 +1091,53 @@ html {
       </p>
     </div>
   </div>
+  
+  <hr class="divider">
+  <!-- ── FAMILIES ── -->
+  <div class="section families-bg">
+    <p class="sec-eyebrow">Blessed by</p>
+    <h2 class="sec-title">Our Families</h2>
 
+    <div class="families-layout">
+      <div class="fam-card">
+        <p class="fam-side">Groom's Family</p>
+        <p class="fam-name">Harsha N.</p>
+        <p class="fam-deg">B.E.</p>
+        <p class="fam-lbl">Son of</p>
+        <p class="fam-parents">Smt. Prabhavathi R.<br>&amp; Sri Nagaraju M.</p>
+        <div class="fam-addr">No. 49, Muthu Nilaya, Someshwaranagar,<br>Chikkabomsandra, G.K.V.K. Post,<br>Bengaluru – 560065</div>
+        <div class="fam-phone">📞 9448212841 · 7259588533 · 8861131071</div>
+      </div>
+
+      <div class="fam-div">
+        <div class="fam-div-line"></div>
+        <div class="fam-div-icon">✿</div>
+        <div class="fam-div-line"></div>
+      </div>
+
+      <div class="fam-card fam-right">
+        <p class="fam-side">Bride's Family</p>
+        <p class="fam-name">Niharika P.N.</p>
+        <p class="fam-deg">B.Pharma</p>
+        <p class="fam-lbl">Daughter of</p>
+        <p class="fam-parents">Elder Dr. Smt. Nalina B.R.<br>&amp; Sri Nagraj P.L.</p>
+        <div class="fam-addr">No. 80, Pattandur Agrahara,<br>Whitefield, Bengaluru</div>
+        <div class="fam-phone">📞 9740464943</div>
+      </div>
+    </div>
+
+    <div class="also-inviting">
+      <p class="sec-eyebrow" style="margin-bottom:16px">Also inviting with love from</p>
+      <div class="also-names">
+        Smt. Prabhavathi R. &amp; Sri Nagaraju M.<br>
+        Smt. Manasa S. &amp; Sri Kirankumar N.<br>
+        Smt. Nalina B.R. &amp; Sri Nagaraju P.N.<br>
+        Kum. Gritha K. &nbsp;&amp;&nbsp; Chi. Rudved K.
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
 
   <!-- ── FOOTER ── -->
 <footer>
@@ -1061,13 +1160,13 @@ html {
   <p class="footer-kan">ಮದುವೆಯ ಮಮತೆಯ ಕರೆಯೋಲೆ</p>
 
   <!-- CONTACT SECTION INSIDE FOOTER -->
-  <div class="footer-contact">
+  <div class="footer-contact" id="contact">
     <p class="footer-contact-title">For any queries</p>
 
     <div class="footer-contact-numbers">
       <div>📞 9448212841</div>
       <div>📞 7259588533</div>
-      <div>📞 9740464943</div>
+      <div>📞 8861131071</div>
     </div>
   </div>
 
@@ -1087,6 +1186,20 @@ html {
 </div>
 
 <script>
+function toggleMusic() {
+  var music = document.getElementById('bg-music');
+  var btn = document.getElementById('music-control');
+
+  if (!music) return;
+
+  if (music.paused) {
+    music.play();
+    btn.textContent = '🔊';
+  } else {
+    music.pause();
+    btn.textContent = '🔇';
+  }
+}
 /* ── PETALS ── */
 (function() {
   var container = document.getElementById('petals-container');
@@ -1110,26 +1223,36 @@ html {
 
 /* ── ENVELOPE OPEN ── */
 var opened = false;
+
 function openEnvelope() {
   if (opened) return;
 
   var env = document.getElementById('envelope');
   env.classList.add('opening');
 
+  // ▶️ PLAY MUSIC (must be inside user interaction)
+  var music = document.getElementById('bg-music');
+  if (music) {
+    music.volume = 0.3; // optional
+    music.play().catch(() => {});
+  }
+
   setTimeout(function() {
     document.getElementById('page-landing').classList.add('hidden');
     document.getElementById('page-main').classList.add('visible');
 
-    // 👉 SHOW NAV HERE
-    document.querySelector('.top-nav').style.opacity = '1';
-    document.querySelector('.top-nav').style.pointerEvents = 'auto';
-    document.querySelector('.top-nav').style.transform = 'translateY(0)';
+    // 👉 SHOW NAV
+    var nav = document.querySelector('.top-nav');
+    if (nav) {
+      nav.style.opacity = '1';
+      nav.style.pointerEvents = 'auto';
+      nav.style.transform = 'translateY(0)';
+    }
 
     document.body.style.overflow = 'auto';
     opened = true;
   }, 1200);
 }
-
 /* ── COUNTDOWN ── */
 (function() {
   var target = new Date('2026-05-04T09:15:00');
@@ -1219,6 +1342,46 @@ function prevImg() {
   currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
   showImage('Harsha & Niharika');
 }
+
+document.addEventListener("visibilitychange", function () {
+  var music = document.getElementById("bg-music");
+  if (!music) return;
+
+  // Fade-out when leaving tab
+  if (document.hidden) {
+    let vol = music.volume;
+
+    var fadeOut = setInterval(function () {
+      if (vol > 0.05) {
+        vol -= 0.05;
+        music.volume = vol;
+      } else {
+        music.volume = 0;
+        music.pause();
+        clearInterval(fadeOut);
+      }
+    }, 80);
+  }
+
+  // Optional: fade-in when returning
+  else {
+    music.play().catch(() => {});
+
+    let vol = 0;
+    music.volume = 0;
+
+    var fadeIn = setInterval(function () {
+      if (vol < 0.6) {
+        vol += 0.05;
+        music.volume = vol;
+      } else {
+        music.volume = 0.6;
+        clearInterval(fadeIn);
+      }
+    }, 80);
+  }
+});
+
 </script>
 </body>
 </html>
