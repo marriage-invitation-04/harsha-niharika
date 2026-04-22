@@ -1186,18 +1186,22 @@ html {
 </div>
 
 <script>
+var isManuallyPaused = false;
+var fadeInterval = null;
 function toggleMusic() {
-  var music = document.getElementById('bg-music');
-  var btn = document.getElementById('music-control');
+  var music = document.getElementById("bg-music");
+  var btn = document.getElementById("music-control");
 
   if (!music) return;
 
   if (music.paused) {
+    isManuallyPaused = false;
     music.play();
-    btn.textContent = '🔊';
+    btn.textContent = "🔊";
   } else {
+    isManuallyPaused = true;
     music.pause();
-    btn.textContent = '🔇';
+    btn.textContent = "🔇";
   }
 }
 /* ── PETALS ── */
@@ -1347,38 +1351,49 @@ document.addEventListener("visibilitychange", function () {
   var music = document.getElementById("bg-music");
   if (!music) return;
 
-  // Fade-out when leaving tab
-  if (document.hidden) {
-    let vol = music.volume;
-
-    var fadeOut = setInterval(function () {
-      if (vol > 0.05) {
-        vol -= 0.05;
-        music.volume = vol;
-      } else {
-        music.volume = 0;
-        music.pause();
-        clearInterval(fadeOut);
-      }
-    }, 80);
+  // STOP fade conflicts
+  if (fadeInterval) {
+    clearInterval(fadeInterval);
+    fadeInterval = null;
   }
 
-  // Optional: fade-in when returning
-  else {
-    music.play().catch(() => {});
+  if (document.hidden) {
 
-    let vol = 0;
-    music.volume = 0;
+    // fade out only if user didn't manually pause
+    if (!music.paused) {
+      var vol = music.volume;
 
-    var fadeIn = setInterval(function () {
-      if (vol < 0.6) {
-        vol += 0.05;
-        music.volume = vol;
-      } else {
-        music.volume = 0.6;
-        clearInterval(fadeIn);
-      }
-    }, 80);
+      fadeInterval = setInterval(function () {
+        if (vol > 0.05) {
+          vol -= 0.05;
+          music.volume = vol;
+        } else {
+          music.volume = 0;
+          music.pause();
+          clearInterval(fadeInterval);
+        }
+      }, 80);
+    }
+
+  } else {
+
+    // ONLY resume if it was NOT manually paused
+    if (!isManuallyPaused) {
+      music.play().catch(() => {});
+
+      var vol = 0;
+      music.volume = 0;
+
+      fadeInterval = setInterval(function () {
+        if (vol < 0.6) {
+          vol += 0.05;
+          music.volume = vol;
+        } else {
+          music.volume = 0.6;
+          clearInterval(fadeInterval);
+        }
+      }, 80);
+    }
   }
 });
 
